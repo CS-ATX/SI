@@ -1,6 +1,21 @@
 #+title: Find The Bug(s)
 
+Try your best to solve them without running the code, especially for the earlier challenges.
+
+Once you think you have an answer, fix it an run.
+- if its still broken, try to parse the error.
+- if it worked, re-break the program, explain what the error might be, then run and read the error log to match up your understanding.
+
+* Contents :toc:
+- [[#week-1][Week 1]]
+  - [[#challenge-0][Challenge 0]]
+  - [[#challenge-1][Challenge 1]]
+  - [[#challenge-2][Challenge 2]]
+  - [[#challenge-3][Challenge 3]]
+- [[#week-2][Week 2]]
+
 * Week 1
+
 ** Challenge 0
 
 Bugs: 1

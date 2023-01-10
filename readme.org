@@ -5,7 +5,7 @@ Assistance
 
 Challenges
 - Write the program
-- Find the bug
+- [[./challenges/find-the-bug.org][Find the bug]]
 
 Activities
 - Create your own "Find the bug" and have others solve it.
