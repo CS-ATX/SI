@@ -1,0 +1,11 @@
+#+title: COSC SI Resources
+
+Assistance
+- Setting up editors
+
+Challenges
+- Write the program
+- Find the bug
+
+Activities
+- Create your own "Find the bug" and have others solve it.

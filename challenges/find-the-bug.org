@@ -1,0 +1,56 @@
+#+title: Find The Bug(s)
+
+* Week 1
+** Challenge 0
+
+Bugs: 1
+
+#+begin_src C++ :main no :results output
+#include <iostream> // for cout
+
+std::cout << "Hello, World!" << '\n';
+#+end_src
+
+** Challenge 1
+
+Bugs: 1
+
+#+begin_src C++ :results output
+include <iostream> // for cout
+
+int main()
+{
+    std::cout << "Hello, World!" << '\n';
+    return 0;
+}
+#+end_src
+
+** Challenge 2
+
+Bugs: 1
+
+#+begin_src C++ :results output
+#include <iostream> // for cout
+
+int main()
+{
+    std::cout >> "Hello, World!" >> '\n';
+    return 0;
+}
+#+end_src
+
+** Challenge 3
+
+Bugs: 1
+
+#+begin_src C++ :results output
+#include <iostream> // for cout
+
+int main()
+{
+    cout << "Hello, World!" << '\n';
+    return 0;
+}
+#+end_src
+
+* Week 2
