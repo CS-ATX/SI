@@ -1,0 +1,86 @@
+#+title: Setting Up An Editor
+
+Picking an editor (or IDE) can be confusing. Hopefully these brief explaination clear up some of the frustration.
+
+* Content :toc:
+- [[#tldr][TL;DR]]
+- [[#all-platforms][All Platforms]]
+  - [[#vs-code][VS Code]]
+  - [[#vim--emacs][Vim / Emacs]]
+- [[#macos][MacOS]]
+  - [[#xcode][XCode]]
+- [[#windows][Windows]]
+  - [[#visual-studio][Visual Studio]]
+  - [[#devc][DevC++]]
+- [[#linux][Linux]]
+
+* TL;DR
+
+Option 1:
+Use VS Code if you don't want to overthink things; it just works (well), though you might have some trouble with the initial setup.
+
+Option 2:
+Use Visual Studio (Windows) or XCode (MacOS) if you want a very complete package out-of-the-box, and want
+
+Option 3:
+Use DevC++ if you want to stick to what the course recommends.
+
+Option 4:
+Use Vim or Emacs if you cool, and are willing to suffer more in the short term.
+
+* All Platforms
+** VS Code
+
+Pros:
+- One of the most popular editors
+- Multi-platform
+- Can use it (well) with most languages
+- Has an incredible suite of extensions
+
+Cons:
+- Can be complicated to set up inititally for C++
+
+** Vim / Emacs
+
+Pros:
+- Efficiency
+- Simplicity:
+- Portability
+
+Cons:
+- Very steep learning curve
+- /Need/ external tools to run programs (actually a positive if you know how to use such tools)
+
+* MacOS
+** XCode
+
+Pros:
+- Put together well
+- Easy to find resources online for assistance with C++
+
+Cons:
+- Targetted more towards IOS Programming
+- MacOS-specific ecosystem
+- Large install size (over 10 GB)
+- Overly complicated
+
+* Windows
+** Visual Studio
+
+Pros:
+- Put together well
+- Easy to find resources online for assistance with C++
+
+Cons:
+- Overly complicated
+
+** DevC++
+
+Pros:
+- This is recommended by the course
+
+Cons:
+- Clunky and buggier than your code will be
+- You won't use this for long, once you start programming outside of the course
+
+* Linux
