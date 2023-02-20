@@ -1,0 +1,923 @@
+#+title: Session Exercises
+
+* Contents :toc:
+- [[#section-0---inputoutput][Section 0 - Input/Output]]
+- [[#section-1---][Section 1 - ...]]
+- [[#section-2---][Section 2 - ...]]
+- [[#section-3---conditional-statements][Section 3 - Conditional Statements]]
+  - [[#issues][Issues]]
+  - [[#projects][Projects]]
+  - [[#questions][Questions]]
+- [[#section-35---additional-topics][Section 3.5 - Additional Topics]]
+  - [[#issues-1][Issues]]
+  - [[#projects-1][Projects]]
+  - [[#questions-1][Questions]]
+- [[#section-4---loops][Section 4 - Loops]]
+  - [[#issues-2][Issues]]
+  - [[#conversion][Conversion]]
+  - [[#projects-2][Projects]]
+  - [[#questions-2][Questions]]
+- [[#section-5---functions][Section 5 - Functions]]
+  - [[#issues-3][Issues]]
+  - [[#projects-3][Projects]]
+  - [[#questions-3][Questions]]
+
+* Section 0 - Input/Output
+* Section 1 - ...
+* Section 2 - ...
+* Section 3 - Conditional Statements
+** Issues
+*** Issue 0 - If Code-Block error
+
+#+begin_src C++
+#include <iostream>
+
+// does absolute value
+int main() {
+    int value = 0;
+
+    if (!(std::cin >> value))
+    {
+        std::cout << "Exiting... Input must be an integer.";
+        return 0;
+    }
+
+    // store a copy of the initial value, for printing later.
+    int initialValue = value;
+
+    if (value < 0)
+        value *= -1;
+        std::cout << "" << '\n';
+    else
+        std::cout << "Input is already positive." << '\n';
+
+    std::cout << "| " << initialValue << "| is " << value << '\n';
+
+    return 0;
+}
+#+end_src
+
+#+RESULTS:
+: Exiting... Input must be an integer.
+
+*** Issue 1 - else with conditional
+
+#+begin_src C++
+#include <iostream>
+
+int main() {
+    int x = 3;
+
+    if (x >= 5)
+        std::cout << x << " is greater than, or equal to, 5" << '\n';
+    else (x < 5)
+        std::cout << x << " is less than 5" << '\n';
+
+    return 0;
+}
+#+end_src
+
+#+RESULTS:
+
+*** Issue 2 - Sloppy Nesting
+
+#+begin_src C++
+#include <iostream>
+
+int main() {
+
+    bool condition = false;
+    int x = 7;
+
+    if (condition)
+        std::cout << "Condition is TRUE!" << '\n';
+    else
+        if (x > 5)
+            std::cout << "Condition is FALSE and x is > than 5." << '\n';
+        else
+            std::cout << "Conditiion is FALSE and x is less than, or equal to, 5." << '\n';
+
+    return 0;
+}
+#+end_src
+
+*** Issue 2.1 - Chaining [not the same?] conditionals
+
+exact same program as the last.
+completely valid code, but something is logically very wrong to do.
+
+#+begin_src C++
+#include <iostream>
+
+int main() {
+
+    bool condition = false;
+    int x = 7;
+
+    if (condition)
+        std::cout << "Condition is TRUE!" << '\n';
+    else if (x > 5)
+        std::cout << "Condition is FALSE and x is > than 5." << '\n';
+    else
+        std::cout << "Conditiion is FALSE and x is less than, or equal to, 5." << '\n';
+
+    return 0;
+}
+#+end_src
+
+#+RESULTS:
+: Condition is FALSE and x is > than 5.
+
+*** Issue 3 - Fallthrough
+
+#+begin_src C++
+#include <iostream>
+
+int main() {
+
+    char selection = 'b';
+
+    switch (selection)
+    {
+        case 'a':
+            std::cout << "You selected A" << '\n';
+        case 'b':
+            std::cout << "You selected B" << '\n';
+        case 'c':
+            std::cout << "You selected C" << '\n';
+        case 'd':
+            std::cout << "You selected D" << '\n';
+        case 'e':
+            std::cout << "You selected E" << '\n';
+
+    };
+
+    return 0;
+}
+#+end_src
+
+*** Issue 4 - Wrong quotes
+
+#+begin_src C++
+#include <iostream>
+
+int main() {
+
+    char selection = 'b';
+
+    switch (selection)
+    {
+        case "a":
+            std::cout << "You selected A" << '\n';
+            break;
+        case "b":
+            std::cout << "You selected B" << '\n';
+            break;
+        case "c":
+            std::cout << "You selected C" << '\n';
+            break;
+        case "d":
+            std::cout << "You selected D" << '\n';
+            break;
+        case "e":
+            std::cout << "You selected E" << '\n';
+            break;
+
+    };
+
+    return 0;
+}
+#+end_src
+
+#+RESULTS:
+
+*** Issue 5 - Missing Needed default case
+
+#+begin_src C++
+#include <iostream>
+
+int main() {
+
+    char selection = 'f';
+
+    switch (selectioin)
+    {
+        case 'a':
+            std::cout << "You selected A" << '\n';
+            break;
+        case 'b':
+            std::cout << "You selected B" << '\n';
+            break;
+        case 'c':
+            std::cout << "You selected C" << '\n';
+            break;
+        case 'd':
+            std::cout << "You selected D" << '\n';
+            break;
+        case 'e':
+            std::cout << "You selected E" << '\n';
+            break;
+    };
+
+    return 0;
+}
+#+end_src
+
+*** Issue 6 - Wrong data type
+
+#+begin_src C++
+#include <iostream>
+
+int main() {
+
+    double selection = 2;
+
+    switch (selection)
+    {
+        case 1:
+            std::cout << "You selected 1" << '\n';
+            break;
+        case 2:
+            std::cout << "You selected 2" << '\n';
+            break;
+        case 3:
+            std::cout << "You selected 3" << '\n';
+            break;
+        case 4:
+            std::cout << "You selected 4" << '\n';
+            break;
+        case 5:
+            std::cout << "You selected 5" << '\n';
+            break;
+        default:
+            std::cout << "Invalid Selection" << '\n';
+            break;
+
+    };
+
+    return 0;
+}
+#+end_src
+
+#+RESULTS:
+** Projects
+*** Challenge 0 - if to switch
+
+Don't worry about checking the uppercase condition for this exercise.
+
+#+begin_src C++
+#include <iostream>
+
+int main() {
+
+    char selection = 'a';
+
+    if (selection == 'a')
+        std::cout << "You selected A." << '\n';
+    else if (selection == 'b')
+        std::cout << "You selected B." << '\n';
+    else if (selection == 'c')
+        std::cout << "You selected C." << '\n';
+    else if (selection == 'd')
+        std::cout << "You selected D." << '\n';
+    else if (selection == 'e')
+        std::cout << "You selected E." << '\n';
+    else
+        std::cout << "Not a valid selection." << '\n';
+
+    return 0;
+}
+#+end_src
+
+#+RESULTS:
+: You selected A.
+
+*** Challenge 1 - switch to if
+
+don't manually check if the stuff in the (parens) is also true also, do that with the structure.
+ie. checking lower bounds first.
+
+#+begin_src C++
+#include <iostream>
+
+int main() {
+
+    char value = 0;
+
+    switch (value)
+    {
+        case 0:
+        case 1:
+        case 2:
+        case 3:
+        case 4:
+            std::cout << "Value is less than 5 (Not negative)." << '\n';
+            break;
+        case 5:
+        case 6:
+        case 7:
+        case 8:
+        case 9:
+            std::cout << "Value is less than 9 (but > 4)." << '\n';
+            break;
+        case 10:
+        case 11:
+        case 12:
+        case 13:
+        case 14:
+            std::cout << "Value is less than 15 (but > 9)." << '\n';
+            break;
+        case 15:
+        case 16:
+        case 17:
+        case 18:
+        case 19:
+            std::cout << "Value is less than 20 (but > 14)." << '\n';
+            break;
+        default:
+            std::cout << "Value not valid." << '\n';
+            break;
+
+    };
+
+    return 0;
+}
+#+end_src
+
+#+RESULTS:
+: Value is less than 5 (but not negative).
+
+*** Challenge 2 - Print every case if it matches
+
+Like in our last example, use a switch statement to print if a value is less than a maximum.
+
+except make it so that if prints every limit it is below.
+
+use the max limit of 20, and do 5 step increments.
+
+- ie. if the number is 19, print:
+  Value is less than 20.
+- ie. if the number is 14, print:
+  Value is less than 15.
+  Value is less than 20.
+- ie. if the number is 0, print:
+  Value is less than 5.
+  Value is less than 10.
+  Value is less than 15.
+  Value is less than 20.
+
+the output code won't be far too different than the original switch code of the last example.
+
+It's not the most useful example, but it will give you a more intuitive sense of switch statements, and help to avoid ome of the logical errors many people make with them.
+
+=question after= how would we go about printing those values in reverse (proper) order?
+
+#+begin_src C++
+#include <iostream>
+
+int main() {
+
+    char value = 0;
+
+    switch (value)
+    {
+        case 0:
+        case 1:
+        case 2:
+        case 3:
+        case 4:
+            std::cout << "Value is less than 5." << '\n';
+        case 5:
+        case 6:
+        case 7:
+        case 8:
+        case 9:
+            std::cout << "Value is less than 9." << '\n';
+        case 10:
+        case 11:
+        case 12:
+        case 13:
+        case 14:
+            std::cout << "Value is less than 15." << '\n';
+        case 15:
+        case 16:
+        case 17:
+        case 18:
+        case 19:
+            std::cout << "Value is less than 20." << '\n';
+            break;
+        default:
+            std::cout << "Value not valid." << '\n';
+            break;
+
+    };
+
+    return 0;
+}
+#+end_src
+
+#+RESULTS:
+| Value | is | less | than |  5 |
+| Value | is | less | than |  9 |
+| Value | is | less | than | 15 |
+| Value | is | less | than | 20 |
+
+** Questions
+
+What is the truth value of 0?
+
+What is the truth value of 1?
+
+What is a better way to write this snippet:
+- why is that better / what is it doing differently?
+#+begin_src C++
+#include <iostream>
+
+int main()
+{
+    bool condition = true;
+
+    if (condition == true)
+        std::cout << 5;
+
+    return 0;
+}
+#+end_src
+
+What does the default keyword do?
+
+What does a case keyword do?
+
+What data types can you use in a switch statement?
+
+When is a good time to use a switch over an if?
+
+When is a good time to use an if over a switch?
+
+What are the symbols for AND in C++? (symbols, plural)
+
+What are the symbols for OR in C++? (symbols, plural)
+
+What are the symbols for NOT in C++? (symbols, plural)
+
+What is the precedence of the logical operators?
+ie. what truth value does this evaluate to?
+=(2 < 3) || (5 > 6) && (7 > 8)= (true)
+
+What is scope?
+
+How does the computer store characters?
+What data type is it actually?
+(less important, but) What's know the value of capital A? lowercase a?
+
+How do you define a scope in C++?
+Literally, not the definition
+
+What is another word for an inline if-else?
+What does it look like?
+
+* Section 3.5 - Additional Topics
+** Issues
+*** Issue 0 - Input cant fit!
+
+#+begin_src C++
+#include <iostream>
+
+int main() {
+    int value,
+        another;
+
+    // to see the error behavior,
+    // enter a value greater than 2.5 billion
+    std::cout << "Enter a value: ";
+    std::cin >> value;
+
+    std::cout << "Enter another value: ";
+    std::cin >> another;
+
+    std::cout << "Value 1: " << value << '\n'
+              << "Value 2: " << another << '\n';
+
+    return 0;
+}
+#+end_src
+
+Questions
+- Why is another being set to that value?
+- What happens if we initialize our ints?
+
+** Projects
+*** Challenge 0 - Enumerated Days of the week
+
+#+begin_src C++
+#include <iostream>
+
+enum Weekdays
+{
+    MON, TUE, WED, THU, FRI, SAT, SUN,
+};
+
+int main() {
+
+    Weekdays today = WED;
+
+    switch (today)
+    {
+        case MON:
+            std::cout << "Today is Monday.";
+            break;
+        case TUE:
+            std::cout << "Today is Tuesday.";
+            break;
+        case WED:
+            std::cout << "Today is Wednesday.";
+            break;
+        case THU:
+            std::cout << "Today is Thursday.";
+            break;
+        case FRI:
+            std::cout << "Today is Friday.";
+            break;
+        case SAT:
+            std::cout << "Today is Saturday.";
+            break;
+        case SUN:
+            std::cout << "Today is Sunday.";
+            break;
+        default:
+            std::cout << "Not a day of the week.";
+            break;
+
+    }
+
+    return 0;
+}
+#+end_src
+
+Questions:
+- what if I set =today= to be =2=
+
+*** Challenge 1 - Enumerated -- and Scoped -- Days of the week
+
+#+begin_src C++
+#include <iostream>
+
+enum class Weekdays
+{
+    MON, TUE, WED, THU, FRI, SAT, SUN,
+};
+
+int main() {
+
+    Weekdays today = Weekdays::WED;
+
+    switch (today)
+    {
+        case Weekdays::MON:
+            std::cout << "Today is Monday.";
+            break;
+        case Weekdays::TUE:
+            std::cout << "Today is Tuesday.";
+            break;
+        case Weekdays::WED:
+            std::cout << "Today is Wednesday.";
+            break;
+        case Weekdays::THU:
+            std::cout << "Today is Thursday.";
+            break;
+        case Weekdays::FRI:
+            std::cout << "Today is Friday.";
+            break;
+        case Weekdays::SAT:
+            std::cout << "Today is Saturday.";
+            break;
+        case Weekdays::SUN:
+            std::cout << "Today is Sunday.";
+            break;
+        default:
+            std::cout << "Not a day of the week.";
+            break;
+
+    }
+
+    return 0;
+}
+#+end_src
+
+** Questions
+
+What is an enumerated type?
+What what are they good for?
+
+How do we define an enumerated type?
+
+What is the default value of the first item in an enum?
+What is default data type of enum values?
+How do we change that?
+
+Why would we want to use enums? -- readability!
+
+How do we define a scoped enumerated type?
+
+* Section 4 - Loops
+** Issues
+*** Issue 0 - Terminated line after condition
+
+#+begin_src C++
+#include <iostream>
+
+int main(int argc, char *argv[]) {
+
+    int i = 0;
+    while (i < 10);
+    {
+        std::cout << i << '\n';
+        ++i;
+    }
+
+    return 0;
+}
+#+end_src
+
+*** Issue 0.1 - Using while syntax with for
+
+#+begin_src C++
+#include <iostream>
+
+int main()
+{
+    int i = 0;
+    for (i < 10)
+    {
+        std::cout << i << '\n';
+        i++;
+    }
+
+    return 0;
+}
+#+end_src
+
+*** Issue 1 - Using uninitialized i
+
+#+begin_src C++
+#include <iostream>
+
+int main()
+{
+    for (i = 0; i < 10; i++)
+    {
+        std::cout << i << '\n';
+    }
+
+    return 0;
+}
+#+end_src
+
+*** Issue 2 - While w/o incrementor
+
+#+begin_src C++
+#include <iostream>
+
+int main()
+{
+    int i = 0;
+    while (i < 10)
+    {
+        std::cout << i << '\n';
+    }
+
+    return 0;
+}
+#+end_src
+
+*** Issue 3 - Do-While, already past condition
+
+Not error, but behavior
+
+#+begin_src C++
+#include <iostream>
+
+int main()
+{
+    int x = 5;
+    do {
+        std::cout << x << '\n';
+        x++;
+    } while (x < 5);
+
+    std::cout << "outside" << '\n';
+
+    return 0;
+}
+#+end_src
+
+*** Issue 4 - Looping out of range
+
+#+begin_src C++
+#include <iostream>
+
+int main()
+{
+    for (int i = 0; i <= 10; ++i)
+    {
+        std::cout << i << '\n';
+    }
+
+    return 0;
+}
+#+end_src
+
+*** Issue 5 - Nested Looping with same iterator
+
+#+begin_src C++
+#include <iostream>
+
+// loop ten times
+int main()
+{
+    for (int i = 0; i < 10; ++i)
+    {
+        for (int i = 0; i < 10; ++i)
+        {
+            std::cout << i*i << '\n';
+        }
+    }
+
+    return 0;
+}
+#+end_src
+
+*** Issue 6 - Updating i twice
+
+#+begin_src C++
+#include <iostream>
+
+int main()
+{
+    for (int i = 0; i < 10; ++i)
+    {
+        std::cout << i << '\n';
+        i++;
+    }
+
+    return 0;
+}
+#+end_src
+
+*** Issue 7 - initializing in loop (while)
+
+#+begin_src C++
+#include <iostream>
+
+int main()
+{
+    while (i < 5)
+    {
+        int i = 0;
+
+        std::cout << i << '\n';
+        i++;
+    }
+
+    return 0;
+}
+#+end_src
+
+** Conversion
+*** Challenge 0 - for -to- while
+
+#+begin_src C++
+#include <iostream>
+
+int main()
+{
+    for (int i = 0; i <= 10; ++i)
+    {
+        std::cout << i << '\n';
+    }
+
+    return 0;
+}
+#+end_src
+
+** Projects
+*** FizzBuzz
+*** FileIO
+
+#+begin_src C++
+#include <fstream>
+#include <iostream>
+#include <string>
+
+int main(int argc, char *argv[]) {
+
+    std::ifstream inputFile;
+    // ofstream outputFile;
+
+    inputFile.open("history.log");
+    // outputFile.open("somefile.log");
+
+    std::string strVariable;
+
+    // check if it was able to open the file
+    if (inputFile)
+    {
+        // get one value, like cin
+        // inputFile >> variable;
+        std::getline(inputFile, strVariable);
+        std::cout << strVariable << '\n';
+    }
+
+    inputFile.close();
+    // outputFile.close();
+
+    return 0;
+}
+#+end_src
+
+** Questions
+
+when does an for loop execute its terms
+1. initializer / loop variant
+2. condition
+3. updater
+
+when will i be updated
+#+begin_src c++
+for (int i = 0; i < 10; ++i)
+{
+    // do something
+}
+#+end_src
+
+value++
+++value
+
+value--
+--value
+
+can we eliminate certain terms from our for loop?
+
+what happens if we eliminate all the terms within a for loop?
+
+given the following program, what is going to happen?
+#+begin_src C++
+#include <iostream>
+
+// loop ten times
+int main()
+{
+    for (;;)
+    {
+        std::cout << "Running" << '\n';
+    }
+
+    return 0;
+}
+#+end_src
+what would be an equivalent statement with while loop instead of a for?
+
+why would you want a for loop over a while loop?
+- what happens with the loop variant in the for loop, vs a while loop?
+why would you want a while loop over a for loop?
+- what is the best data type to use with while loops?
+
+Why would you want a do while over a while loop?
+Why would you want a while over a do while loop?
+
+how many times does a nested for loop execute?
+- n*m
+
+what does break do in a loop?
+
+difference between break and return?
+
+what does continue do in a loop?
+
+what is a sentinal?
+- a value that indicates the end
+
+what is the result of this statement?
+#+begin_src C++ :includes iostream
+int a = 3;
+int b = 5;
+std::cout << (a++ + ++b) * ++a;
+#+end_src
+
+#+RESULTS:
+: 45
+
+how about this one?
+#+begin_src C++ :includes iostream
+int a = 3;
+int b = 5;
+std::cout << (--a + ++b) * a++;
+#+end_src
+
+#+RESULTS:
+: 16
+
+* Section 5 - Functions
+** Issues
+** Projects
+** Questions
